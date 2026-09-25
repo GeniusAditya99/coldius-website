@@ -1172,3 +1172,34 @@ footer p {
     }
 
 }
+/* ========================================
+   SCROLL REVEAL
+======================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Smooth page scrolling */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Better text rendering */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
