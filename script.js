@@ -16,3 +16,18 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
     revealObserver.observe(element);
 });
+/* ========================================
+   PRELOADER
+======================================== */
+
+window.addEventListener("load", () => {
+
+    const preloader = document.getElementById("preloader");
+
+    setTimeout(() => {
+
+        preloader.classList.add("loaded");
+
+    }, 2200);
+
+});
