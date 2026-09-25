@@ -823,3 +823,22 @@ footer p {
     }
 
 }
+.shows-message {
+    min-height: 50vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.shows-message p {
+    font-size: clamp(35px, 6vw, 90px);
+
+    font-weight: 800;
+
+    letter-spacing: -3px;
+
+    opacity: 0.35;
+}
