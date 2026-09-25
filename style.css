@@ -549,3 +549,277 @@ footer p {
     }
 
 }
+/* ========================================
+   MUSIC SECTION
+======================================== */
+
+.music-section {
+
+    min-height: 100vh;
+
+    padding: 150px 8%;
+
+    background: #050505;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.music-header {
+
+    margin-bottom: 100px;
+
+}
+
+.music-header h2 {
+
+    font-size: clamp(60px, 10vw, 150px);
+
+    line-height: 0.85;
+
+    letter-spacing: -7px;
+
+    font-weight: 900;
+
+}
+
+
+.release {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+    align-items: center;
+
+}
+
+
+/* ARTWORK */
+
+.release-art {
+
+    aspect-ratio: 1;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #162c48,
+            #050505 65%
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.art-glow {
+
+    position: absolute;
+
+    width: 55%;
+
+    height: 55%;
+
+    border-radius: 50%;
+
+    background: rgba(80, 150, 255, 0.25);
+
+    filter: blur(70px);
+
+    animation: artworkGlow 5s ease-in-out infinite;
+
+}
+
+
+@keyframes artworkGlow {
+
+    0% {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+
+}
+
+
+.art-symbol {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: clamp(100px, 15vw, 220px);
+
+    font-weight: 900;
+
+    font-style: italic;
+
+    color: white;
+
+    text-shadow:
+
+        0 0 20px rgba(255,255,255,0.4),
+
+        0 0 60px rgba(80,150,255,0.5);
+
+}
+
+
+.art-text {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    right: 30px;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    opacity: 0.5;
+
+}
+
+
+/* RELEASE INFORMATION */
+
+.release-status {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    opacity: 0.45;
+
+}
+
+
+.release-info h3 {
+
+    font-size: clamp(50px, 6vw, 90px);
+
+    margin: 20px 0;
+
+    letter-spacing: -4px;
+
+}
+
+
+.release-description {
+
+    max-width: 450px;
+
+    line-height: 1.8;
+
+    color: #888;
+
+}
+
+
+/* STREAMING PLATFORMS */
+
+.platforms {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 45px;
+
+}
+
+
+.platform {
+
+    padding: 14px 22px;
+
+    border: 1px solid #333;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+
+}
+
+
+.platform:hover {
+
+    background: white;
+
+    color: black;
+
+    border-color: white;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .music-section {
+
+        padding: 100px 25px;
+
+    }
+
+
+    .music-header h2 {
+
+        letter-spacing: -4px;
+
+    }
+
+
+    .release {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+    }
+
+
+    .release-info h3 {
+
+        font-size: 55px;
+
+    }
+
+}
