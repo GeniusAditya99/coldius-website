@@ -955,3 +955,195 @@ footer p {
     }
 
 }
+/* ========================================
+   ABOUT SECTION
+======================================== */
+
+.about-section {
+
+    min-height: 100vh;
+
+    padding: 150px 8%;
+
+    background: #050505;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+}
+
+
+.about-header {
+
+    margin-bottom: 120px;
+
+}
+
+
+.about-content {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+    align-items: center;
+
+    flex: 1;
+
+}
+
+
+.about-title h2 {
+
+    font-size: clamp(90px, 15vw, 220px);
+
+    line-height: 0.75;
+
+    letter-spacing: -10px;
+
+    font-weight: 900;
+
+}
+
+
+.about-role {
+
+    margin-top: 30px;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    opacity: 0.4;
+
+}
+
+
+.about-main {
+
+    font-size: clamp(30px, 4vw, 65px);
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+}
+
+
+.about-description {
+
+    max-width: 500px;
+
+    margin-top: 45px;
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+}
+
+
+.about-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 100px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #222;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.35;
+
+}
+
+
+/* subtle background light */
+
+.about-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    right: -250px;
+
+    top: 30%;
+
+    border-radius: 50%;
+
+    background: rgba(40, 100, 180, 0.08);
+
+    filter: blur(130px);
+
+    pointer-events: none;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .about-section {
+
+        padding: 100px 25px;
+
+    }
+
+    .about-header {
+
+        margin-bottom: 70px;
+
+    }
+
+    .about-content {
+
+        grid-template-columns: 1fr;
+
+        gap: 70px;
+
+    }
+
+    .about-title h2 {
+
+        font-size: 90px;
+
+        letter-spacing: -6px;
+
+    }
+
+    .about-main {
+
+        font-size: 38px;
+
+    }
+
+    .about-bottom {
+
+        margin-top: 70px;
+
+    }
+
+}
