@@ -254,7 +254,7 @@ nav a,
 
     position: absolute;
 
-    bottom: auto;
+    bottom: 30px;
 
     left: 50%;
 
@@ -266,7 +266,7 @@ nav a,
 
     align-items: center;
 
-    gap: 20px;
+    gap: 10px;
 
     font-size: 9px;
 
