@@ -1280,294 +1280,740 @@ body {
 .platform:hover::before {
     width: 100%;
 }
-/* ========================================
-   PRELOADER
-======================================== */
+/* =========================================================
+   COLDIUS PREMIUM CINEMATIC PRELOADER
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   MAIN SCREEN
+--------------------------------------------------------- */
 
 #preloader {
+
     position: fixed;
 
     inset: 0;
 
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 
     background: #000;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 99999;
-
-    transition:
-        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-        visibility 1s;
-}
-
-
-/* PLUS */
-
-.loader-symbol {
-    position: relative;
-
-    width: 70px;
-    height: 70px;
-
-    animation:
-        loaderAppear 1s ease forwards,
-        loaderRotate 2s ease-in-out 1s forwards;
-}
-
-
-.loader-horizontal,
-.loader-vertical {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    background: white;
-
-    transform: translate(-50%, -50%);
-
-    box-shadow:
-        0 0 10px rgba(255,255,255,0.7),
-        0 0 30px rgba(80,150,255,0.4);
-}
-
-
-/* horizontal line */
-
-.loader-horizontal {
-    width: 0;
-    height: 2px;
-
-    animation:
-        horizontalGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1)
-        0.3s forwards;
-}
-
-
-/* vertical line */
-
-.loader-vertical {
-    width: 2px;
-    height: 0;
-
-    animation:
-        verticalGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1)
-        0.3s forwards;
-}
-
-
-/* ========================================
-   ANIMATIONS
-======================================== */
-
-@keyframes horizontalGrow {
-
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 70px;
-    }
-
-}
-
-
-@keyframes verticalGrow {
-
-    from {
-        height: 0;
-    }
-
-    to {
-        height: 70px;
-    }
-
-}
-
-
-@keyframes loaderAppear {
-
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-}
-
-
-@keyframes loaderRotate {
-
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-
-    100% {
-        transform: rotate(90deg) scale(1.15);
-    }
-
-}
-
-
-/* ========================================
-   HIDE PRELOADER
-======================================== */
-
-#preloader.loaded {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-/* ========================================
-   CINEMATIC PLUS PRELOADER
-======================================== */
-
-#preloader {
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    background: #000;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 99999;
 
     overflow: hidden;
 
-    pointer-events: none;
+    z-index: 999999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+
 }
 
 
-/* PLUS CONTAINER */
+/* ---------------------------------------------------------
+   WEBSITE WORLD
+   This is the website waiting underneath the logo.
+--------------------------------------------------------- */
 
-.loader-symbol {
+.preloader-world {
+
     position: absolute;
 
-    width: 60px;
-    height: 60px;
+    inset: -8%;
 
-    left: 50%;
-    top: 50%;
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.20),
+            rgba(0,0,0,0.35)
+        ),
+        url("assets/hero-bg.png");
 
-    transform: translate(-50%, -50%);
+    background-size: cover;
 
-    z-index: 2;
+    background-position: center;
+
+    transform: scale(1.12);
+
+    opacity: 0;
+
+    filter: brightness(0.75)
+            contrast(1.12)
+            saturate(0.85);
+
+    z-index: -3;
 
     animation:
-        plusExpand 1.8s cubic-bezier(0.76, 0, 0.24, 1)
-        1.7s forwards;
+        worldReveal
+        1.8s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        1.75s
+        forwards;
+
 }
 
 
-/* THE TWO LINES */
+/* ---------------------------------------------------------
+   CINEMATIC BLUE ATMOSPHERE
+--------------------------------------------------------- */
 
-.loader-horizontal,
-.loader-vertical {
+.preloader-light {
+
     position: absolute;
 
-    background: #fff;
+    width: 55vw;
+    height: 55vw;
+
+    max-width: 900px;
+    max-height: 900px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(75,145,255,0.20) 0%,
+            rgba(35,100,220,0.10) 25%,
+            rgba(0,0,0,0) 70%
+        );
+
+    filter: blur(30px);
+
+    opacity: 0;
+
+    z-index: -1;
+
+    animation:
+        atmosphereReveal
+        3s
+        ease-out
+        0.5s
+        forwards;
+
+}
+
+
+/* ---------------------------------------------------------
+   DARK CINEMATIC VIGNETTE
+--------------------------------------------------------- */
+
+.preloader-vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            transparent 20%,
+            rgba(0,0,0,0.25) 55%,
+            rgba(0,0,0,0.90) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 3;
+
+}
+
+
+/* ---------------------------------------------------------
+   LOGO
+--------------------------------------------------------- */
+
+.preloader-logo {
+
+    position: absolute;
 
     left: 50%;
     top: 50%;
 
+    width: min(190px, 20vw);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.72);
+
+    opacity: 0;
+
+    z-index: 10;
+
+    animation:
+
+        logoEntrance
+        1.15s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        0.15s
+        forwards,
+
+        logoBreathing
+        2.1s
+        ease-in-out
+        1.2s
+        infinite;
+
+}
+
+
+/* ---------------------------------------------------------
+   LOGO IMAGE
+--------------------------------------------------------- */
+
+.preloader-logo img {
+
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    filter:
+
+        drop-shadow(
+            0 0 5px
+            rgba(255,255,255,0.95)
+        )
+
+        drop-shadow(
+            0 0 18px
+            rgba(105,175,255,0.95)
+        )
+
+        drop-shadow(
+            0 0 45px
+            rgba(30,110,255,0.65)
+        )
+
+        drop-shadow(
+            0 0 90px
+            rgba(20,80,220,0.35)
+        );
+
+}
+
+
+/* ---------------------------------------------------------
+   LOGO HALO
+--------------------------------------------------------- */
+
+.preloader-logo::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -70%;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(130,190,255,0.24) 0%,
+            rgba(70,140,255,0.13) 22%,
+            rgba(0,0,0,0) 67%
+        );
+
+    filter: blur(15px);
+
+    z-index: -1;
+
+    animation:
+        haloPulse
+        2s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ---------------------------------------------------------
+   SMALL LIGHT CORE
+--------------------------------------------------------- */
+
+.preloader-logo::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 8px;
+    height: 8px;
+
     transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: white;
 
     box-shadow:
-        0 0 15px rgba(255,255,255,0.8),
-        0 0 50px rgba(80,150,255,0.5);
+
+        0 0 10px white,
+
+        0 0 25px
+        rgba(120,190,255,1),
+
+        0 0 60px
+        rgba(40,120,255,0.9);
+
+    opacity: 0.8;
+
 }
 
 
-/* HORIZONTAL */
+/* =========================================================
+   PARTICLES
+========================================================= */
 
-.loader-horizontal {
+.preloader-particles {
 
-    width: 60px;
-    height: 2px;
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+    opacity: 0;
+
+    background-image:
+
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(150,210,255,0.8) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 78% 18%,
+            rgba(120,190,255,0.7) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 28% 75%,
+            rgba(150,220,255,0.65) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 82% 72%,
+            rgba(100,170,255,0.8) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 50% 12%,
+            rgba(255,255,255,0.7) 0 1px,
+            transparent 2px
+        );
 
     animation:
-        horizontalExpand
-        1.8s cubic-bezier(0.76, 0, 0.24, 1)
-        1.7s forwards;
+
+        particlesAppear
+        3s
+        ease-out
+        0.5s
+        forwards;
+
 }
 
 
-/* VERTICAL */
-
-.loader-vertical {
-
-    width: 2px;
-    height: 60px;
-
-    animation:
-        verticalExpand
-        1.8s cubic-bezier(0.76, 0, 0.24, 1)
-        1.7s forwards;
-}
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
 
-/* ========================================
-   MAGNIFICATION
-======================================== */
+/* ---------------------------------------------------------
+   LOGO ENTRANCE
+--------------------------------------------------------- */
 
-@keyframes horizontalExpand {
+@keyframes logoEntrance {
 
     0% {
-        width: 60px;
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.35);
+
+        filter: blur(8px);
+
+    }
+
+    55% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.85);
+
+        filter: blur(0);
+
     }
 
     100% {
-        width: 250vw;
-    }
 
-}
+        opacity: 1;
 
-
-@keyframes verticalExpand {
-
-    0% {
-        height: 60px;
-    }
-
-    100% {
-        height: 250vh;
-    }
-
-}
-
-
-/* ========================================
-   PLUS SCALE
-======================================== */
-
-@keyframes plusExpand {
-
-    0% {
         transform:
             translate(-50%, -50%)
             scale(1);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   CONSTANT BREATHING
+--------------------------------------------------------- */
+
+@keyframes logoBreathing {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.035);
+
     }
 
     100% {
+
         transform:
             translate(-50%, -50%)
-            scale(1.5);
+            scale(1);
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   HALO PULSE
+--------------------------------------------------------- */
+
+@keyframes haloPulse {
+
+    0% {
+
+        transform: scale(0.85);
+
+        opacity: 0.45;
+
+    }
+
+    50% {
+
+        transform: scale(1.08);
+
+        opacity: 0.9;
+
+    }
+
+    100% {
+
+        transform: scale(0.85);
+
+        opacity: 0.45;
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   BACKGROUND REVEAL
+--------------------------------------------------------- */
+
+@keyframes worldReveal {
+
+    0% {
+
+        opacity: 0;
+
+        transform: scale(1.16);
+
+        filter:
+            brightness(0.2)
+            contrast(1.2)
+            blur(8px);
+
+    }
+
+    45% {
+
+        opacity: 0.35;
+
+    }
+
+    75% {
+
+        opacity: 0.82;
+
+        transform: scale(1.04);
+
+        filter:
+            brightness(0.65)
+            contrast(1.12)
+            blur(1px);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+        filter:
+            brightness(0.82)
+            contrast(1.08)
+            blur(0);
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   ATMOSPHERE
+--------------------------------------------------------- */
+
+@keyframes atmosphereReveal {
+
+    0% {
+
+        opacity: 0;
+
+        transform: scale(0.5);
+
+    }
+
+    50% {
+
+        opacity: 0.8;
+
+        transform: scale(1);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform: scale(1.15);
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PARTICLES
+--------------------------------------------------------- */
+
+@keyframes particlesAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform: scale(0.8);
+
+    }
+
+    50% {
+
+        opacity: 0.45;
+
+    }
+
+    100% {
+
+        opacity: 0.7;
+
+        transform: scale(1.1);
+
+    }
+
+}
+
+
+/* =========================================================
+   THE BIG CINEMATIC ZOOM
+========================================================= */
+
+#preloader.is-zooming .preloader-logo {
+
+    animation:
+
+        logoZoomOut
+        1.65s
+        cubic-bezier(0.76, 0, 0.24, 1)
+        forwards;
+
+}
+
+
+#preloader.is-zooming .preloader-logo::before {
+
+    animation:
+
+        haloExplosion
+        1.65s
+        cubic-bezier(0.76, 0, 0.24, 1)
+        forwards;
+
+}
+
+
+/* ---------------------------------------------------------
+   LOGO FLIES INTO CAMERA
+--------------------------------------------------------- */
+
+@keyframes logoZoomOut {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+    35% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(2.2);
+
+    }
+
+    65% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(5.5);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(18);
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   HALO EXPLOSION
+--------------------------------------------------------- */
+
+@keyframes haloExplosion {
+
+    0% {
+
+        transform: scale(1);
+
+        opacity: 0.8;
+
+    }
+
+    45% {
+
+        transform: scale(3);
+
+        opacity: 0.9;
+
+    }
+
+    100% {
+
+        transform: scale(12);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   PRELOADER EXIT
+========================================================= */
+
+#preloader.finished {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .preloader-logo {
+
+        width: 145px;
+
+    }
+
+    .preloader-world {
+
+        background-position: center;
+
     }
 
 }
