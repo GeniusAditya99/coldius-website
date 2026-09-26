@@ -68,8 +68,6 @@ nav a,
 
 /* HERO */
 
-/* HERO */
-
 .hero {
     min-height: 100vh;
 
@@ -87,7 +85,6 @@ nav a,
 
     background: #000;
 }
-
 
 /* BLUE ATMOSPHERIC LIGHT */
 
@@ -1207,10 +1204,19 @@ body {
    HERO ENTRANCE
 ======================================== */
 
-.hero-title {
-    opacity: 0;
-    transform: translateY(60px);
-    animation: heroEnter 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+   .hero-title {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    margin: 0;
 }
 
 @keyframes heroEnter {
