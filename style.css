@@ -844,8 +844,8 @@ footer p {
 ======================================== */
 
 .shows-section {
-    min-height: 85vh !important;
-    padding: 120px 8% !important;
+    min-height: auto !important;
+    padding: auto !important;
     background: #000 !important;
 
     display: flex !important;
