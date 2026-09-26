@@ -1280,740 +1280,133 @@ body {
 .platform:hover::before {
     width: 100%;
 }
-/* =========================================================
-   COLDIUS PREMIUM CINEMATIC PRELOADER
-   ========================================================= */
+/* =====================================================
+   COLdius INTRO ANIMATION
+   ===================================================== */
 
-
-/* ---------------------------------------------------------
-   MAIN SCREEN
---------------------------------------------------------- */
-
-#preloader {
-
+#intro-loader {
     position: fixed;
-
     inset: 0;
-
-    width: 100vw;
-    height: 100vh;
-
     background: #000;
-
-    overflow: hidden;
-
-    z-index: 999999;
+    z-index: 99999;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    isolation: isolate;
+    overflow: hidden;
 
+    animation: loaderExit 0.1s linear 2.9s forwards;
 }
 
 
-/* ---------------------------------------------------------
-   WEBSITE WORLD
-   This is the website waiting underneath the logo.
---------------------------------------------------------- */
+/* THE PLUS */
 
-.preloader-world {
-
+.loader-plus {
     position: absolute;
 
-    inset: -8%;
-
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.20),
-            rgba(0,0,0,0.35)
-        ),
-        url("assets/hero-bg.png");
-
-    background-size: cover;
-
-    background-position: center;
-
-    transform: scale(1.12);
-
-    opacity: 0;
-
-    filter: brightness(0.75)
-            contrast(1.12)
-            saturate(0.85);
-
-    z-index: -3;
-
-    animation:
-        worldReveal
-        1.8s
-        cubic-bezier(0.16, 1, 0.3, 1)
-        1.75s
-        forwards;
-
-}
-
-
-/* ---------------------------------------------------------
-   CINEMATIC BLUE ATMOSPHERE
---------------------------------------------------------- */
-
-.preloader-light {
-
-    position: absolute;
-
-    width: 55vw;
-    height: 55vw;
-
-    max-width: 900px;
-    max-height: 900px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(75,145,255,0.20) 0%,
-            rgba(35,100,220,0.10) 25%,
-            rgba(0,0,0,0) 70%
-        );
-
-    filter: blur(30px);
-
-    opacity: 0;
-
-    z-index: -1;
-
-    animation:
-        atmosphereReveal
-        3s
-        ease-out
-        0.5s
-        forwards;
-
-}
-
-
-/* ---------------------------------------------------------
-   DARK CINEMATIC VIGNETTE
---------------------------------------------------------- */
-
-.preloader-vignette {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-
-        radial-gradient(
-            ellipse at center,
-            transparent 20%,
-            rgba(0,0,0,0.25) 55%,
-            rgba(0,0,0,0.90) 100%
-        );
-
-    pointer-events: none;
-
-    z-index: 3;
-
-}
-
-
-/* ---------------------------------------------------------
-   LOGO
---------------------------------------------------------- */
-
-.preloader-logo {
-
-    position: absolute;
+    width: 90px;
+    height: 90px;
 
     left: 50%;
     top: 50%;
 
-    width: min(190px, 20vw);
-
-    transform:
-        translate(-50%, -50%)
-        scale(0.72);
-
-    opacity: 0;
-
-    z-index: 10;
+    transform: translate(-50%, -50%) rotate(0deg);
 
     animation:
-
-        logoEntrance
-        1.15s
-        cubic-bezier(0.16, 1, 0.3, 1)
-        0.15s
-        forwards,
-
-        logoBreathing
-        2.1s
-        ease-in-out
-        1.2s
-        infinite;
-
+        plusRotate 2.2s cubic-bezier(.65,0,.25,1) forwards,
+        plusExpand 0.9s cubic-bezier(.76,0,.24,1) 2.2s forwards;
 }
 
 
-/* ---------------------------------------------------------
-   LOGO IMAGE
---------------------------------------------------------- */
+/* Vertical + horizontal bars */
 
-.preloader-logo img {
+.loader-plus span {
+    position: absolute;
 
     display: block;
 
-    width: 100%;
-    height: auto;
-
-    object-fit: contain;
-
-    user-select: none;
-
-    pointer-events: none;
-
-    filter:
-
-        drop-shadow(
-            0 0 5px
-            rgba(255,255,255,0.95)
-        )
-
-        drop-shadow(
-            0 0 18px
-            rgba(105,175,255,0.95)
-        )
-
-        drop-shadow(
-            0 0 45px
-            rgba(30,110,255,0.65)
-        )
-
-        drop-shadow(
-            0 0 90px
-            rgba(20,80,220,0.35)
-        );
-
-}
-
-
-/* ---------------------------------------------------------
-   LOGO HALO
---------------------------------------------------------- */
-
-.preloader-logo::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -70%;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(130,190,255,0.24) 0%,
-            rgba(70,140,255,0.13) 22%,
-            rgba(0,0,0,0) 67%
-        );
-
-    filter: blur(15px);
-
-    z-index: -1;
-
-    animation:
-        haloPulse
-        2s
-        ease-in-out
-        infinite;
-
-}
-
-
-/* ---------------------------------------------------------
-   SMALL LIGHT CORE
---------------------------------------------------------- */
-
-.preloader-logo::after {
-
-    content: "";
-
-    position: absolute;
+    background: #fff;
 
     left: 50%;
     top: 50%;
 
-    width: 8px;
-    height: 8px;
-
     transform: translate(-50%, -50%);
 
-    border-radius: 50%;
-
-    background: white;
-
     box-shadow:
-
-        0 0 10px white,
-
-        0 0 25px
-        rgba(120,190,255,1),
-
-        0 0 60px
-        rgba(40,120,255,0.9);
-
-    opacity: 0.8;
-
+        0 0 10px rgba(255,255,255,.9),
+        0 0 30px rgba(255,255,255,.5),
+        0 0 70px rgba(255,255,255,.25);
 }
 
 
-/* =========================================================
-   PARTICLES
-========================================================= */
+/* Vertical bar */
 
-.preloader-particles {
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 4;
-
-    opacity: 0;
-
-    background-image:
-
-        radial-gradient(
-            circle at 15% 25%,
-            rgba(150,210,255,0.8) 0 1px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 78% 18%,
-            rgba(120,190,255,0.7) 0 1px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 28% 75%,
-            rgba(150,220,255,0.65) 0 1px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 82% 72%,
-            rgba(100,170,255,0.8) 0 1px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 50% 12%,
-            rgba(255,255,255,0.7) 0 1px,
-            transparent 2px
-        );
-
-    animation:
-
-        particlesAppear
-        3s
-        ease-out
-        0.5s
-        forwards;
-
+.loader-plus span:first-child {
+    width: 9px;
+    height: 90px;
 }
 
 
-/* =========================================================
-   ANIMATIONS
-========================================================= */
+/* Horizontal bar */
+
+.loader-plus span:last-child {
+    width: 90px;
+    height: 9px;
+}
 
 
-/* ---------------------------------------------------------
-   LOGO ENTRANCE
---------------------------------------------------------- */
+/* Rotate approximately 2.5 times */
 
-@keyframes logoEntrance {
+@keyframes plusRotate {
 
     0% {
-
-        opacity: 0;
-
         transform:
             translate(-50%, -50%)
-            scale(0.35);
-
-        filter: blur(8px);
-
-    }
-
-    55% {
-
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(0.85);
-
-        filter: blur(0);
-
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
+            rotate(0deg)
             scale(1);
-
-        filter: blur(0);
-
     }
 
-}
-
-
-/* ---------------------------------------------------------
-   CONSTANT BREATHING
---------------------------------------------------------- */
-
-@keyframes logoBreathing {
-
-    0% {
-
+    100% {
         transform:
             translate(-50%, -50%)
+            rotate(900deg)
             scale(1);
-
     }
+}
 
-    50% {
 
+/* Massive expansion */
+
+@keyframes plusExpand {
+
+    0% {
         transform:
             translate(-50%, -50%)
-            scale(1.035);
-
-    }
-
-    100% {
-
-        transform:
-            translate(-50%, -50%)
+            rotate(900deg)
             scale(1);
-
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   HALO PULSE
---------------------------------------------------------- */
-
-@keyframes haloPulse {
-
-    0% {
-
-        transform: scale(0.85);
-
-        opacity: 0.45;
-
-    }
-
-    50% {
-
-        transform: scale(1.08);
-
-        opacity: 0.9;
-
     }
 
     100% {
-
-        transform: scale(0.85);
-
-        opacity: 0.45;
-
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   BACKGROUND REVEAL
---------------------------------------------------------- */
-
-@keyframes worldReveal {
-
-    0% {
-
-        opacity: 0;
-
-        transform: scale(1.16);
-
-        filter:
-            brightness(0.2)
-            contrast(1.2)
-            blur(8px);
-
-    }
-
-    45% {
-
-        opacity: 0.35;
-
-    }
-
-    75% {
-
-        opacity: 0.82;
-
-        transform: scale(1.04);
-
-        filter:
-            brightness(0.65)
-            contrast(1.12)
-            blur(1px);
-
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform: scale(1);
-
-        filter:
-            brightness(0.82)
-            contrast(1.08)
-            blur(0);
-
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   ATMOSPHERE
---------------------------------------------------------- */
-
-@keyframes atmosphereReveal {
-
-    0% {
-
-        opacity: 0;
-
-        transform: scale(0.5);
-
-    }
-
-    50% {
-
-        opacity: 0.8;
-
-        transform: scale(1);
-
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform: scale(1.15);
-
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   PARTICLES
---------------------------------------------------------- */
-
-@keyframes particlesAppear {
-
-    0% {
-
-        opacity: 0;
-
-        transform: scale(0.8);
-
-    }
-
-    50% {
-
-        opacity: 0.45;
-
-    }
-
-    100% {
-
-        opacity: 0.7;
-
-        transform: scale(1.1);
-
-    }
-
-}
-
-
-/* =========================================================
-   THE BIG CINEMATIC ZOOM
-========================================================= */
-
-#preloader.is-zooming .preloader-logo {
-
-    animation:
-
-        logoZoomOut
-        1.65s
-        cubic-bezier(0.76, 0, 0.24, 1)
-        forwards;
-
-}
-
-
-#preloader.is-zooming .preloader-logo::before {
-
-    animation:
-
-        haloExplosion
-        1.65s
-        cubic-bezier(0.76, 0, 0.24, 1)
-        forwards;
-
-}
-
-
-/* ---------------------------------------------------------
-   LOGO FLIES INTO CAMERA
---------------------------------------------------------- */
-
-@keyframes logoZoomOut {
-
-    0% {
-
-        opacity: 1;
-
         transform:
             translate(-50%, -50%)
-            scale(1);
-
+            rotate(900deg)
+            scale(35);
     }
-
-    35% {
-
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(2.2);
-
-    }
-
-    65% {
-
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(5.5);
-
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translate(-50%, -50%)
-            scale(18);
-
-    }
-
 }
 
 
-/* ---------------------------------------------------------
-   HALO EXPLOSION
---------------------------------------------------------- */
+/* Remove black loader */
 
-@keyframes haloExplosion {
+@keyframes loaderExit {
 
     0% {
-
-        transform: scale(1);
-
-        opacity: 0.8;
-
-    }
-
-    45% {
-
-        transform: scale(3);
-
-        opacity: 0.9;
-
+        opacity: 1;
     }
 
     100% {
-
-        transform: scale(12);
-
         opacity: 0;
-
+        visibility: hidden;
+        pointer-events: none;
     }
-
-}
-
-
-/* =========================================================
-   PRELOADER EXIT
-========================================================= */
-
-#preloader.finished {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.5s ease,
-        visibility 0.5s;
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .preloader-logo {
-
-        width: 145px;
-
-    }
-
-    .preloader-world {
-
-        background-position: center;
-
-    }
-
 }
