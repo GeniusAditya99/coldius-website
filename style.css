@@ -1414,3 +1414,55 @@ body {
         pointer-events: none;
     }
 }
+/* Website reveal */
+
+body {
+    animation: websiteReveal 1.2s cubic-bezier(.77,0,.18,1) 2.25s forwards;
+
+    clip-path: polygon(
+        49% 0%,
+        51% 0%,
+        51% 49%,
+        100% 49%,
+        100% 51%,
+        51% 51%,
+        51% 100%,
+        49% 100%,
+        49% 51%,
+        0% 51%,
+        0% 49%,
+        49% 49%
+    );
+}
+
+
+/* Plus-shaped opening expands into the entire website */
+
+@keyframes websiteReveal {
+
+    0% {
+        clip-path: polygon(
+            49% 0%,
+            51% 0%,
+            51% 49%,
+            100% 49%,
+            100% 51%,
+            51% 51%,
+            51% 100%,
+            49% 100%,
+            49% 51%,
+            0% 51%,
+            0% 49%,
+            49% 49%
+        );
+    }
+
+    100% {
+        clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            100% 100%,
+            0% 100%
+        );
+    }
+}
