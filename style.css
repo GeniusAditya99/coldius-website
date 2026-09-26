@@ -1205,18 +1205,16 @@ body {
 ======================================== */
 
    .hero-title {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
     width: 100%;
-
     text-align: center;
-
-    margin: 0;
+    margin: 0 auto;
+    position: relative;
+    left: auto;
+    right: auto;
+    transform: none;
+    font-size: clamp(80px, 14vw, 220px);
+    line-height: 0.85;
+    white-space: nowrap;
 }
 
 @keyframes heroEnter {
